@@ -50,12 +50,12 @@ New subject directories (e.g., `cpp/`) will be created **only when the user expl
 
 | Element | Convention | Example |
 |---------|-----------|---------|
-| Note files | `<NN>-<kebab-case-topic>.md` | `03-pointers.md` |
-| Code directories | `code/<NN>-<kebab-case-topic>/` | `code/03-pointers/` |
+| Note files | `<SectionNumber>[a-z]-<kebab-case-topic>.md` | `1.2a-cucp-resiliency.md` |
+| Code directories | `code/<SectionNumber>[a-z]-<kebab-case-topic>/` | `code/1.2a-cucp-resiliency/` |
 | Code files | Descriptive, lowercase, `.c` extension | `pointer_basics.c` |
 
-- **Numbering** is sequential (01, 02, 03...) and reflects the order in which topics were learned.
-- **Never renumber** existing files. If a topic is added out of order, it gets the next available number.
+- **Numbering** aligns exactly with the syllabus section (e.g., 1.2a, 1.2b for multiple notes in section 1.2).
+- **Never renumber** to arbitrary sequences; always pin to the topic hierarchy.
 
 ---
 
@@ -104,19 +104,19 @@ The `CONTENTS.md` file inside each subject directory is an **auto-maintained tab
 
 1. **Read this file first** before making any changes to the repository.
 2. **Never create a new subject directory** (e.g., `cpp/`, `5g-ran/`) unless the user explicitly asks.
-3. **Always update `CONTENTS.md`** after creating or modifying a note.
-4. **Preserve existing notes** — do not modify them unless the user asks for corrections or updates.
-5. **Use sequential numbering** — check the existing notes to determine the next number.
+3. **Always update `CONTENTS.md`** after creating, modifying, or renaming a note.
+4. **Proactive Updates**: During conversations, if you discover new insights, corrections, or topics that deserve to be documented, automatically update the relevant notes and `CONTENTS.md` without waiting for explicit permission, and then inform the user about the changes you made.
+5. **Renumber and reorganize notes** dynamically to maintain a logical learning progression. While new notes may be added out of order, the `CONTENTS.md` and filenames should eventually reflect the proper syllabus order (lowest-level to highest-level concepts).
 6. **Keep notes conversational but structured** — they should read naturally while following the template.
-7. **Include runnable code examples** whenever a topic involves programming concepts.
-8. **Add the current date** to the "Last updated" footer of every note you create or modify.
+7. **Use visual aids** — include Mermaid or PlantUML diagrams, tables, and alerts in notes where appropriate to explain complex concepts effectively.
+8. **Include runnable code examples** whenever a topic involves programming concepts.
+9. **Add the current date** to the "Last updated" footer of every note you create or modify.
 
 ### Depth & Tone
 
-9. **Go deep** — explain how things work under the hood (memory layout, compiler behavior, hardware interaction). The user is not a beginner.
-10. **Interview-oriented** — include common interview questions, tricky edge cases, and "gotcha" scenarios interviewers love.
-11. **Not everything needs a note** — if the user asks a quick random question, just answer it. Only create a note file when the topic is substantial and worth preserving as a reference.
-12. **Topics can arrive in any order** — the user may jump around. Number notes by creation order, not by the learning path. Organize via `CONTENTS.md` and `LEARNING_PATH.md`.
+10. **Go deep** — explain how things work under the hood (memory layout, compiler behavior, hardware interaction). The user is not a beginner.
+11. **Interview-oriented** — include common interview questions, tricky edge cases, and "gotcha" scenarios interviewers love.
+12. **Not everything needs a note** — if the user asks a quick random question, just answer it. Only create a note file when the topic is substantial and worth preserving as a reference.
 13. **Evolve the learning path** — if a new important topic comes up that's not in `LEARNING_PATH.md`, add it to the appropriate pillar and phase.
 14. **Be comprehensive, not biased** — when the user mentions a few examples (e.g., "MOCN, CHO, etc."), treat them as starting points, not an exhaustive list. Always give the full picture of what the market/industry demands, covering all relevant features and trends, not just the ones explicitly named.
 15. **Reorganize freely** — notes can be renumbered, restructured, and rearranged to maintain clean organization. Create as many levels of hierarchy as needed. The goal is a neatly organized knowledge base, not rigid numbering.
