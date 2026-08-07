@@ -121,14 +121,19 @@ The `interview_qa/` folder inside each subject directory contains individual mar
 8. **Include runnable code examples** whenever a topic involves programming concepts.
 9. **Add the current date** to the "Last updated" footer of every note you create or modify.
 
+### 5G RAN Specific Rules
+10. **No Code Examples Needed:** The 5G RAN domain is purely theoretical for cracking interviews. Do not attempt to write or include code examples for this domain.
+11. **Compare with LTE/NB-IoT:** Whenever possible, explicitly highlight differences between 5G NR and LTE or NB-IoT, especially focusing on tricky differences that interviewers love to ask about.
+12. **Diagram Format:** Always use **PlantUML** for diagrams in the 5G RAN domain. Ensure they use a white background (`skinparam backgroundColor white`). Do not use Mermaid.
+
 ### Depth & Tone
 
-10. **Go deep** — explain how things work under the hood (memory layout, compiler behavior, hardware interaction). The user is not a beginner.
-11. **Interview-oriented** — include common interview questions, tricky edge cases, and "gotcha" scenarios interviewers love.
-12. **Don't skip the basics** — even if a topic is simple or foundational (like basic syntax, variable initialization, or comments), create notes for it to ensure a complete, unbroken learning path. Do not skip foundational topics assuming the user already knows them from C.
-13. **Evolve the learning path** — if a new important topic comes up, add it to the appropriate Phase in the domain's `CONTENTS.md`.
-14. **Be comprehensive, not biased** — when the user mentions a few examples (e.g., "MOCN, CHO, etc."), treat them as starting points, not an exhaustive list. Always give the full picture of what the market/industry demands, covering all relevant features and trends, not just the ones explicitly named.
-15. **Reorganize freely** — notes can be renumbered, restructured, and rearranged to maintain clean organization. Create as many levels of hierarchy as needed. The goal is a neatly organized knowledge base, not rigid numbering.
+13. **Go deep** — explain how things work under the hood (memory layout, compiler behavior, hardware interaction). The user is not a beginner.
+14. **Interview-oriented** — include common interview questions, tricky edge cases, and "gotcha" scenarios interviewers love.
+15. **Don't skip the basics** — even if a topic is simple or foundational (like basic syntax, variable initialization, or comments), create notes for it to ensure a complete, unbroken learning path. Do not skip foundational topics assuming the user already knows them from C.
+16. **Evolve the learning path** — if a new important topic comes up, add it to the appropriate Phase in the domain's `CONTENTS.md`.
+17. **Be comprehensive, not biased** — when the user mentions a few examples (e.g., "MOCN, CHO, etc."), treat them as starting points, not an exhaustive list. Always give the full picture of what the market/industry demands, covering all relevant features and trends, not just the ones explicitly named.
+18. **Reorganize freely** — notes can be renumbered, restructured, and rearranged to maintain clean organization. Create as many levels of hierarchy as needed. The goal is a neatly organized knowledge base, not rigid numbering.
 
 ---
 
