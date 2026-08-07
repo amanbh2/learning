@@ -27,7 +27,8 @@ learning/
 │
 ├── c/                     # C Language notes & code
 │   ├── CONTENTS.md        # Syllabus and Table of Contents
-│   ├── INTERVIEW_QA.md    # Compiled interview questions and answers
+│   ├── BEST_PRACTICES.md  # Living document for best practices
+│   ├── interview_qa/      # Folder containing split interview Q&A per topic
 │   ├── 01-<topic>.md      # Numbered note files
 │   ├── 02-<topic>.md
 │   └── code/              # Companion code examples
@@ -36,7 +37,8 @@ learning/
 │
 └── 5g-ran/                # 5G RAN domain knowledge
     ├── CONTENTS.md        # Syllabus and Table of Contents
-    ├── INTERVIEW_QA.md    # Compiled interview questions and answers
+    ├── BEST_PRACTICES.md  # Living document for best practices
+    ├── interview_qa/      # Folder containing split interview Q&A per topic
     ├── 01-<topic>.md
     └── 02-<topic>.md
 ```
@@ -91,17 +93,19 @@ References to companion code files in `code/<NN>-<topic>/` with explanations of 
 
 ---
 
-## CONTENTS.md & INTERVIEW_QA.md Maintenance
+## CONTENTS.md, BEST_PRACTICES.md & interview_qa/ Maintenance
 
 The `CONTENTS.md` file inside each subject directory is both the **master syllabus** and the **table of contents**.
-The `INTERVIEW_QA.md` file inside each subject directory is the **master compilation of interview questions**.
+The `BEST_PRACTICES.md` file is a living document of standard idioms.
+The `interview_qa/` folder inside each subject directory contains individual markdown files mapping to specific note topics, compiling all interview questions.
 
 ### Rules
 1. **Always update** `CONTENTS.md` when adding, removing, or renaming a note.
 2. Format each entry as: `| NN | [Topic Title](./NN-topic.md) | Interview Heat | Key Concepts | Status |`
 3. Keep entries sorted by number, grouped by Phase.
-4. **Always update** `INTERVIEW_QA.md` whenever a new interview question or tricky concept is discussed.
-5. If a topic note mentions an interview question, it MUST also be appended to that domain's `INTERVIEW_QA.md` file.
+4. **Always update** the appropriate file in `interview_qa/` (e.g., `interview_qa/14-control-flow.md`) whenever a new interview question or tricky concept is discussed. Create the file if it does not exist.
+5. If a topic note mentions an interview question, it MUST also be appended to that domain's `interview_qa/` folder.
+6. Keep the `BEST_PRACTICES.md` file updated with new language idioms or coding standards as they are discovered.
 
 ---
 
@@ -121,7 +125,7 @@ The `INTERVIEW_QA.md` file inside each subject directory is the **master compila
 
 10. **Go deep** — explain how things work under the hood (memory layout, compiler behavior, hardware interaction). The user is not a beginner.
 11. **Interview-oriented** — include common interview questions, tricky edge cases, and "gotcha" scenarios interviewers love.
-12. **Not everything needs a note** — if the user asks a quick random question, just answer it. Only create a note file when the topic is substantial and worth preserving as a reference.
+12. **Don't skip the basics** — even if a topic is simple or foundational (like basic syntax, variable initialization, or comments), create notes for it to ensure a complete, unbroken learning path. Do not skip foundational topics assuming the user already knows them from C.
 13. **Evolve the learning path** — if a new important topic comes up, add it to the appropriate Phase in the domain's `CONTENTS.md`.
 14. **Be comprehensive, not biased** — when the user mentions a few examples (e.g., "MOCN, CHO, etc."), treat them as starting points, not an exhaustive list. Always give the full picture of what the market/industry demands, covering all relevant features and trends, not just the ones explicitly named.
 15. **Reorganize freely** — notes can be renumbered, restructured, and rearranged to maintain clean organization. Create as many levels of hierarchy as needed. The goal is a neatly organized knowledge base, not rigid numbering.
