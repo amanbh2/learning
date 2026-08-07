@@ -24,10 +24,10 @@ This is a **personal learning repository** for studying **C/C++** and potentiall
 learning/
 ├── GEMINI.md              # THIS FILE — AI rules & conventions
 ├── README.md              # Human-friendly repo overview
-├── LEARNING_PATH.md       # Master learning roadmap (C, C++, 5G RAN)
 │
 ├── c/                     # C Language notes & code
-│   ├── CONTENTS.md        # Auto-maintained table of contents
+│   ├── CONTENTS.md        # Syllabus and Table of Contents
+│   ├── INTERVIEW_QA.md    # Compiled interview questions and answers
 │   ├── 01-<topic>.md      # Numbered note files
 │   ├── 02-<topic>.md
 │   └── code/              # Companion code examples
@@ -35,14 +35,15 @@ learning/
 │       └── 02-<topic>/
 │
 └── 5g-ran/                # 5G RAN domain knowledge
-    ├── CONTENTS.md        # Topics, subtopics & table of contents
+    ├── CONTENTS.md        # Syllabus and Table of Contents
+    ├── INTERVIEW_QA.md    # Compiled interview questions and answers
     ├── 01-<topic>.md
     └── 02-<topic>.md
 ```
 
 ### Future Subjects
 
-New subject directories (e.g., `cpp/`) will be created **only when the user explicitly requests them**. Each will follow the same pattern: a folder with `CONTENTS.md`, numbered notes, and optionally a `code/` subdirectory.
+New subject directories (e.g., `cpp/`) will be created **only when the user explicitly requests them**. Each will follow the same pattern: a folder with `CONTENTS.md` (which also acts as the syllabus), `INTERVIEW_QA.md`, numbered notes, and optionally a `code/` subdirectory.
 
 ---
 
@@ -50,12 +51,13 @@ New subject directories (e.g., `cpp/`) will be created **only when the user expl
 
 | Element | Convention | Example |
 |---------|-----------|---------|
-| Note files | `<SectionNumber>[a-z]-<kebab-case-topic>.md` | `1.2a-cucp-resiliency.md` |
-| Code directories | `code/<SectionNumber>[a-z]-<kebab-case-topic>/` | `code/1.2a-cucp-resiliency/` |
-| Code files | Descriptive, lowercase, `.c` extension | `pointer_basics.c` |
+| Note files | `<SectionNumber>-<kebab-case-topic>.md` | `12-cucp-resiliency.md` |
+| Code directories | `code/<SectionNumber>-<kebab-case-topic>/` | `code/12-cucp-resiliency/` |
+| Code files | Descriptive, lowercase, `.c` or `.cpp` extension | `pointer_basics.c` |
 
-- **Numbering** aligns exactly with the syllabus section (e.g., 1.2a, 1.2b for multiple notes in section 1.2).
-- **Never renumber** to arbitrary sequences; always pin to the topic hierarchy.
+- **Numbering** must strictly be sequential integers (e.g., `01`, `02`, `03`). 
+- **NEVER** use sub-numbering or letters (e.g., `00b`, `04b`, `12a`). This is not sustainable.
+- If a new note is inserted in the middle of a syllabus, you must renumber all subsequent notes to maintain the strict integer sequence.
 
 ---
 
@@ -89,14 +91,17 @@ References to companion code files in `code/<NN>-<topic>/` with explanations of 
 
 ---
 
-## CONTENTS.md Maintenance
+## CONTENTS.md & INTERVIEW_QA.md Maintenance
 
-The `CONTENTS.md` file inside each subject directory is an **auto-maintained table of contents**.
+The `CONTENTS.md` file inside each subject directory is both the **master syllabus** and the **table of contents**.
+The `INTERVIEW_QA.md` file inside each subject directory is the **master compilation of interview questions**.
 
 ### Rules
 1. **Always update** `CONTENTS.md` when adding, removing, or renaming a note.
-2. Format each entry as: `| NN | [Topic Title](./NN-topic.md) | Brief one-line description |`
-3. Keep entries sorted by number.
+2. Format each entry as: `| NN | [Topic Title](./NN-topic.md) | Interview Heat | Key Concepts | Status |`
+3. Keep entries sorted by number, grouped by Phase.
+4. **Always update** `INTERVIEW_QA.md` whenever a new interview question or tricky concept is discussed.
+5. If a topic note mentions an interview question, it MUST also be appended to that domain's `INTERVIEW_QA.md` file.
 
 ---
 
@@ -117,7 +122,7 @@ The `CONTENTS.md` file inside each subject directory is an **auto-maintained tab
 10. **Go deep** — explain how things work under the hood (memory layout, compiler behavior, hardware interaction). The user is not a beginner.
 11. **Interview-oriented** — include common interview questions, tricky edge cases, and "gotcha" scenarios interviewers love.
 12. **Not everything needs a note** — if the user asks a quick random question, just answer it. Only create a note file when the topic is substantial and worth preserving as a reference.
-13. **Evolve the learning path** — if a new important topic comes up that's not in `LEARNING_PATH.md`, add it to the appropriate pillar and phase.
+13. **Evolve the learning path** — if a new important topic comes up, add it to the appropriate Phase in the domain's `CONTENTS.md`.
 14. **Be comprehensive, not biased** — when the user mentions a few examples (e.g., "MOCN, CHO, etc."), treat them as starting points, not an exhaustive list. Always give the full picture of what the market/industry demands, covering all relevant features and trends, not just the ones explicitly named.
 15. **Reorganize freely** — notes can be renumbered, restructured, and rearranged to maintain clean organization. Create as many levels of hierarchy as needed. The goal is a neatly organized knowledge base, not rigid numbering.
 
