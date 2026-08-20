@@ -44,9 +44,21 @@ To allow this external RIC to control the gNB, O-RAN defined new open interfaces
 - **O1 Interface:** Connects the gNB to the centralized Service Management and Orchestration (SMO) framework for standard OAM tasks (alarms, configurations).
 
 ## Key Takeaways
-- **RRM** makes the decisions; **RRC** sends the signaling messages.
-- **UECC** is a vendor implementation module inside the CU that maintains the state of a UE's connection.
-- **O-RAN** pulls the "brains" out of the base station into the **RIC**, allowing 3rd-party AI apps to control the network via the **E2** interface.
+- **O-RAN** opens up the interfaces (like fronthaul and F1) so hardware/software from different vendors can interoperate.
+- It introduces the **RIC** to inject AI/ML into radio resource management.
+- The **UECC** is the internal state machine of the gNB that tracks the lifecycle of every UE.
+- **SON** automates network configuration, healing, and optimization (like ANR for neighbor tables).
+
+## Interview Q&A
+
+**Q: What is the main difference between traditional RAN and Open RAN (O-RAN)?**
+**A:** Traditional RAN uses proprietary hardware and closed interfaces (e.g., CPRI), meaning the baseband and radio must come from the same vendor (e.g., all Ericsson). O-RAN standardizes these interfaces (e.g., eCPRI, Open Fronthaul) so operators can mix and match vendors (e.g., Samsung vDU with Fujitsu Radio Unit).
+
+**Q: What is the purpose of the RIC (RAN Intelligent Controller) in O-RAN?**
+**A:** The RIC is an operating system for the RAN. It allows third-party developers to write apps (xApps/rApps) that use AI/ML to optimize radio resources, mobility, and load balancing in real-time, completely separating the control logic from the underlying hardware.
+
+**Q: Explain the role of ANR (Automatic Neighbor Relation) in SON.**
+**A:** Without ANR, engineers manually configure neighbor lists for handovers. With ANR, if a UE detects a strong unknown cell, the serving gNB asks the UE to read that cell's CGI (Cell Global Identity). The gNB then automatically adds it to its neighbor list and attempts to setup an Xn interface with it.
 
 ---
 *Last updated: 2026-08-08*

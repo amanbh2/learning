@@ -59,5 +59,17 @@ NB-IoT (Narrowband IoT) was introduced in LTE Advanced Pro (Rel-13) and continue
 - **5G is Ultra-Lean:** No CRS floodlighting. Everything relies on directional beams using **Massive MIMO**.
 - **NB-IoT** sits at the opposite extreme: 180 kHz bandwidth and unique 3.75 kHz SCS for deep coverage.
 
+## Interview Q&A
+
+**Q: Why does 5G use different Subcarrier Spacings instead of one like LTE?**
+**A:** Two reasons: (1) High-frequency mmWave hardware suffers from phase noise — wider subcarriers (120 kHz) are less susceptible. (2) Wider SCS = shorter OFDM symbol duration = lower latency, essential for URLLC.
+
+**Q: Contrast 5G NR (FR2) with NB-IoT at the physical layer level.**
+**A:** 5G FR2 uses up to 400 MHz bandwidth with 120 kHz SCS at 28+ GHz. NB-IoT uses 180 kHz bandwidth with 3.75 kHz SCS at sub-1 GHz. They represent the absolute extremes of the 3GPP spectrum.
+
+**Q: Why doesn't 5G use Cell-Specific Reference Signals (CRS) like LTE?**
+**A:** CRS is always-on across the entire cell, causing constant interference to neighbors. 5G uses "ultra-lean design" — reference signals (DMRS) are UE-specific and only transmitted when needed, and SSB is transmitted in directional beams. This dramatically reduces inter-cell interference.
+
 ---
 *Last updated: 2026-08-08*
+

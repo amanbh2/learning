@@ -91,5 +91,20 @@ Interviewers frequently test your understanding by asking you to contrast 5G arc
 - **NSA (Option 3x)** uses the 4G Core and a 4G Master Node for signaling. It is essentially 4G with a 5G data pipe (EN-DC).
 - **SA (Option 2)** is pure 5G, connecting directly to the 5GC, unlocking Slicing and URLLC.
 
+## Interview Q&A
+
+**Q: What is the primary difference between SA and NSA?**
+**A:** In NSA, the 5G gNB relies on the 4G EPC and a 4G eNB (Master Node) for control plane signaling. The UE is dual-connected (EN-DC). In SA, the gNB connects directly to the 5GC with no 4G dependency, enabling Network Slicing and URLLC.
+
+**Q: Which interfaces connect the gNB to the 5G Core?**
+**A:** NG-C (gNB ↔ AMF, control plane, SCTP/NGAP) and NG-U (gNB ↔ UPF, user plane, GTP-U).
+
+**Q: What is the Xn interface used for?**
+**A:** Connects gNBs to each other. Used for Xn Handover (UE context transfer + data forwarding) and Dual Connectivity operations.
+
+**Q: In NSA Option 3x, which node handles the RRC connection?**
+**A:** The 4G eNB (Master Node). The 5G gNB is a Secondary Node providing additional user plane bandwidth only.
+
 ---
 *Last updated: 2026-08-08*
+

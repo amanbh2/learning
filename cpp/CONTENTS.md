@@ -20,41 +20,44 @@
 | 12 | [C++ Jargon & Glossary](./12-cpp-jargon-and-glossary.md) | ⭐⭐⭐⭐ | Statements vs Expressions, UB, RAII, L-values, Translation Units | **Done** |
 | 13 | [Declaration, Definition & Initialization](./13-declaration-definition-initialization.md) | ⭐⭐⭐⭐⭐ | Decl vs Def, Copy/Direct/Brace Init, Copy Elision, Under the Hood | **Done** |
 
-## Phase 2 — Control Flow, Types & Memory (LearnCpp Ch 8-12)
+| 14 | [Local Scope, Lifetime, and Temporary Objects](./14-local-scope-and-lifetime.md) | ⭐⭐⭐⭐ | Local block scope, temporary objects, lifetime, dangling references. | **Done** |
 
-| # | Topic | Interview Heat | Key Concepts & C Comparisons | Status |
+## Phase 2 — Control Flow, Types & Challenges (LearnCpp Ch 1+)
+
+| # | Topic | Interview Heat | Key Concepts | Status |
 |---|-------|---------------|--------------|--------|
-| 14 | Control Flow & Constexpr If | ⭐⭐⭐ | C++ loop mechanics, fallthrough, `constexpr if` (compile-time branching). | Planned |
-| 15 | Type Conversions & Casting | ⭐⭐⭐⭐⭐ | Implicit/Explicit casts, **`static_cast`**, `dynamic_cast`, `const_cast`. Replacing C-style casts. | Planned |
-| 16 | References vs Pointers | ⭐⭐⭐⭐⭐ | L-value references (`&`), pass-by-reference vs pass-by-address. `const` references. **Interview: When to use pointers vs references?** | Planned |
-| 17 | Function Overloading & Default Args | ⭐⭐⭐⭐ | Function overloading, name mangling (extern "C"), default arguments, `inline` functions. | Planned |
+| 15 | [Control Flow & `enum class`](./15-control-flow.md) | ⭐⭐⭐ | C++ loop mechanics, `enum class`, fallthrough, `constexpr if`. Game loop pattern. | **Done** |
+| 16 | [Ch1 Basics Challenge — Temperature Converter](./16-ch1-basics-challenge.md) | ⭐⭐⭐⭐ | Statements vs Expressions, initialization forms, UB, `float` vs `double`, integer division trap, `endl` vs `"\n"` | **Done** |
+| 17 | Type Conversions & Casting | ⭐⭐⭐⭐⭐ | Implicit/Explicit casts, **`static_cast`**, `dynamic_cast`, `const_cast`. Replacing C-style casts. | Planned |
+| 18 | References vs Pointers | ⭐⭐⭐⭐⭐ | L-value references (`&`), pass-by-reference vs pass-by-address. `const` references. | Planned |
+| 19 | Function Overloading & Default Args | ⭐⭐⭐⭐ | Function overloading, name mangling (extern "C"), default arguments, `inline` functions. | Planned |
 
 ## Phase 3 — Object-Oriented C++ (LearnCpp Ch 13-15)
 
 | # | Topic | Interview Heat | Key Concepts & C Comparisons | Status |
 |---|-------|---------------|--------------|--------|
-| 18 | Enums, Structs & `enum class` | ⭐⭐⭐ | Standard C-enums vs strongly-typed C++ `enum class`. | Planned |
-| 19 | Classes & Encapsulation | ⭐⭐⭐ | `class` vs `struct`, access specifiers (public/private/protected), the hidden `this` pointer. | Planned |
-| 20 | Object Lifecycle & RAII | ⭐⭐⭐⭐⭐ | Constructors, initializer lists, Destructors. RAII (Resource Acquisition Is Initialization) — **the most important C++ idiom**. | Planned |
+| 19 | Enums, Structs & `enum class` | ⭐⭐⭐ | Standard C-enums vs strongly-typed C++ `enum class`. | Planned |
+| 20 | Classes & Encapsulation | ⭐⭐⭐ | `class` vs `struct`, access specifiers (public/private/protected), the hidden `this` pointer. | Planned |
+| 21 | Object Lifecycle & RAII | ⭐⭐⭐⭐⭐ | Constructors, initializer lists, Destructors. RAII (Resource Acquisition Is Initialization) — **the most important C++ idiom**. | Planned |
 
 ## Phase 4 — Modern Data Structures (LearnCpp Ch 16-19)
 
 | # | Topic | Interview Heat | Key Concepts & C Comparisons | Status |
 |---|-------|---------------|--------------|--------|
-| 21 | Dynamic Arrays (`std::vector`) | ⭐⭐⭐⭐⭐ | Replacing C-style arrays. Vector capacity vs size, reallocation, `push_back` vs `emplace_back`. | Planned |
-| 22 | Fixed Arrays (`std::array`) | ⭐⭐⭐ | Stack-allocated fixed arrays, bounds checking (`.at()`). | Planned |
-| 23 | Iterators & Algorithms | ⭐⭐⭐⭐ | Standardizing container access. `<algorithm>` library (`std::sort`, `std::find`). | Planned |
-| 24 | Dynamic Allocation | ⭐⭐⭐⭐ | `new` and `delete`. The heap vs stack. Replacing `malloc` and `free`. | Planned |
+| 22 | Dynamic Arrays (`std::vector`) | ⭐⭐⭐⭐⭐ | Replacing C-style arrays. Vector capacity vs size, reallocation, `push_back` vs `emplace_back`. | Planned |
+| 23 | Fixed Arrays (`std::array`) | ⭐⭐⭐ | Stack-allocated fixed arrays, bounds checking (`.at()`). | Planned |
+| 24 | Iterators & Algorithms | ⭐⭐⭐⭐ | Standardizing container access. `<algorithm>` library (`std::sort`, `std::find`). | Planned |
+| 25 | Dynamic Allocation | ⭐⭐⭐⭐ | `new` and `delete`. The heap vs stack. Replacing `malloc` and `free`. | Planned |
 
 ## Phase 5 — Advanced OOP & Move Semantics (LearnCpp Ch 20-25)
 
 | # | Topic | Interview Heat | Key Concepts & C Comparisons | Status |
 |---|-------|---------------|--------------|--------|
-| 25 | Lambdas & Callbacks | ⭐⭐⭐⭐ | Lambda expressions, captures (by value/ref), closures, `std::function`. Replacing C function pointers. | Planned |
-| 26 | Operator Overloading | ⭐⭐⭐⭐ | Overloading operators (`+`, `<<`, `==`), friend functions. Shallow vs Deep copy, Rule of 3. | Planned |
-| 27 | Move Semantics & Smart Pointers | ⭐⭐⭐⭐⭐ | L-values vs R-values, `std::move`. `std::unique_ptr`, `std::shared_ptr`. Rule of 5. | Planned |
-| 28 | Inheritance & Memory Layout | ⭐⭐⭐⭐ | Base/Derived classes, object slicing. Memory layout of derived objects. | Planned |
-| 29 | Polymorphism & Virtual Functions | ⭐⭐⭐⭐⭐ | Static vs Dynamic binding. **The VTable and VPtr under the hood.** `override`, `final`, pure virtuals. | Planned |
+| 26 | Lambdas & Callbacks | ⭐⭐⭐⭐ | Lambda expressions, captures (by value/ref), closures, `std::function`. Replacing C function pointers. | Planned |
+| 27 | Operator Overloading | ⭐⭐⭐⭐ | Overloading operators (`+`, `<<`, `==`), friend functions. Shallow vs Deep copy, Rule of 3. | Planned |
+| 28 | Move Semantics & Smart Pointers | ⭐⭐⭐⭐⭐ | L-values vs R-values, `std::move`. `std::unique_ptr`, `std::shared_ptr`. Rule of 5. | Planned |
+| 29 | Inheritance & Memory Layout | ⭐⭐⭐⭐ | Base/Derived classes, object slicing. Memory layout of derived objects. | Planned |
+| 30 | Polymorphism & Virtual Functions | ⭐⭐⭐⭐⭐ | Static vs Dynamic binding. **The VTable and VPtr under the hood.** `override`, `final`, pure virtuals. | Planned |
 
 ---
 *This file is auto-maintained. It updates whenever a new note is added.*

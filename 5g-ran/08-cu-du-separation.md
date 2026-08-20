@@ -82,5 +82,19 @@ When looking at real-world gNB software, you often see modules that aren't stric
 - **DU hosts:** RLC, MAC, PHY.
 - They communicate via the **F1 interface** (F1-C for control, F1-U for data).
 
+## Interview Q&A
+
+**Q: Where exactly does the 3GPP Option 2 split occur in the protocol stack?**
+**A:** Between PDCP and RLC. The CU contains RRC, SDAP, and PDCP. The DU contains RLC, MAC, and PHY.
+
+**Q: Why is the split between PDCP and RLC the most optimal?**
+**A:** Because RLC and MAC have strict timing requirements (e.g., HARQ retransmissions must happen within milliseconds), so they must be placed close to the antenna (in the DU). PDCP and RRC are delay-tolerant, so they can be centralized in a datacenter (the CU).
+
+**Q: What protocols run over the F1-C (Control Plane) and F1-U (User Plane) interfaces?**
+**A:** 
+- **F1-C:** F1AP (F1 Application Protocol) over SCTP/IP. Used by the CU to manage the DU and setup UE contexts.
+- **F1-U:** GTP-U (GPRS Tunnelling Protocol) over UDP/IP. Used to tunnel user plane data packets between the CU and DU.
+
 ---
 *Last updated: 2026-08-08*
+
