@@ -7,7 +7,7 @@
 
 ## Repository Purpose
 
-This is a **personal learning repository** for studying **C/C++** and potentially **5G RAN** in the future. Notes are created through conversational learning with an AI assistant — the user discusses a topic, and the AI produces structured notes and code examples.
+This is a **personal learning repository** for **interview preparation** targeting a switch to a better company in the **5G RAN domain**. The repo is organized into **7 pillars** covering the complete skill set needed: Linux, Networking, C++/DSA, Debugging, DevOps, System Design, and 5G RAN. Notes are created through conversational learning with an AI assistant — the user discusses a topic, and the AI produces structured notes and code examples.
 
 ### Learner Profile
 
@@ -22,30 +22,45 @@ This is a **personal learning repository** for studying **C/C++** and potentiall
 
 ```
 learning/
-├── GEMINI.md              # THIS FILE — AI rules & conventions
-├── README.md              # Human-friendly repo overview
+├── GEMINI.md                # THIS FILE — AI rules & conventions
+├── README.md                # Human-friendly repo overview
 │
-├── c/                     # C Language notes & code
-│   ├── CONTENTS.md        # Syllabus and Table of Contents
-│   ├── BEST_PRACTICES.md  # Living document for best practices
-│   ├── interview_qa/      # Folder containing split interview Q&A per topic
-│   ├── 01-<topic>.md      # Numbered note files
-│   ├── 02-<topic>.md
-│   └── code/              # Companion code examples
-│       ├── 01-<topic>/
-│       └── 02-<topic>/
+│── ── FOUNDATION LAYER ─────────────────────────────
+├── linux-bash/              # P1: Linux & Bash
+├── networking/              # P2: Networking (TCP, UDP, SCTP, Sockets)
 │
-└── 5g-ran/                # 5G RAN domain knowledge
-    ├── CONTENTS.md        # Syllabus and Table of Contents
-    ├── BEST_PRACTICES.md  # Living document for best practices
-    ├── interview_qa/      # Folder containing split interview Q&A per topic
-    ├── 01-<topic>.md
-    └── 02-<topic>.md
+│── ── CORE SKILLS LAYER ────────────────────────────
+├── cpp/                     # P3: C++ & DSA (merged — learn C++ by building DSA)
+├── dsa-practice/            # P3b: LeetCode-style pattern-based problem solving
+├── debugging-tooling/       # P4: GDB, Core Dumps, Valgrind, Coverity, Wireshark
+│
+│── ── APPLIED KNOWLEDGE LAYER ──────────────────────
+├── devops/                  # P5: Git, Docker, Kubernetes, CI/CD, CMake
+├── system-design/           # P6: LLD + HLD (telecom-specific)
+│   ├── lld/                 #     Low-Level Design problems
+│   └── hld/                 #     High-Level Design problems
+│
+│── ── DOMAIN LAYER ─────────────────────────────────
+├── 5g-ran/                  # P7: 5G RAN Domain Knowledge
+│
+│── ── LEGACY ───────────────────────────────────────
+└── c/                       # C Language notes (referenced from P1/P2)
 ```
 
-### Future Subjects
+Each subject directory follows this structure:
+```
+<subject>/
+├── CONTENTS.md          # Syllabus and Table of Contents
+├── BEST_PRACTICES.md    # Living document for best practices
+├── interview_qa/        # Interview Q&A per topic
+├── 01-<topic>.md        # Numbered note files
+├── 02-<topic>.md
+└── code/                # Companion code examples (where applicable)
+```
 
-New subject directories (e.g., `cpp/`) will be created **only when the user explicitly requests them**. Each will follow the same pattern: a folder with `CONTENTS.md` (which also acts as the syllabus), `INTERVIEW_QA.md`, numbered notes, and optionally a `code/` subdirectory.
+### Pillar System
+
+The repo is organized into **7 pillars** studied in order (foundation → core → applied → domain). Each pillar has its own directory. New pillars should only be created when the user explicitly requests them. Each follows the same pattern: a folder with `CONTENTS.md`, `BEST_PRACTICES.md`, `interview_qa/`, numbered notes, and optionally a `code/` subdirectory.
 
 ---
 
@@ -112,7 +127,7 @@ The `interview_qa/` folder inside each subject directory contains individual mar
 ## AI Behavior Rules
 
 1. **Read this file first** before making any changes to the repository.
-2. **Never create a new subject directory** (e.g., `cpp/`, `5g-ran/`) unless the user explicitly asks.
+2. **Never create a new pillar/subject directory** unless the user explicitly asks. The 7 pillars are already established.
 3. **Always update `CONTENTS.md`** after creating, modifying, or renaming a note.
 4. **Proactive Updates**: During conversations, if you discover new insights, corrections, or topics that deserve to be documented, automatically update the relevant notes and `CONTENTS.md` without waiting for explicit permission, and then inform the user about the changes you made.
 5. **Renumber and reorganize notes** dynamically to maintain a logical learning progression. While new notes may be added out of order, the `CONTENTS.md` and filenames should eventually reflect the proper syllabus order (lowest-level to highest-level concepts).
@@ -126,6 +141,12 @@ The `interview_qa/` folder inside each subject directory contains individual mar
 11. **Compare with LTE/NB-IoT:** Whenever possible, explicitly highlight differences between 5G NR and LTE or NB-IoT, especially focusing on tricky differences that interviewers love to ask about.
 12. **Diagram Format:** Always use **PlantUML** for diagrams in the 5G RAN domain. Ensure they use a white background (`skinparam backgroundColor white`). Do not use Mermaid.
 
+### Pillar-Specific Rules
+19. **Theory-only pillars** (`linux-bash/`, `networking/`, `devops/`): Include inline code snippets and commands, but do not create separate code files unless the user explicitly asks.
+20. **Code-heavy pillars** (`cpp/`, `dsa-practice/`, `debugging-tooling/`, `system-design/`): Always include runnable code examples in `code/` subdirectories.
+21. **Cross-reference between pillars** — when a topic is covered in multiple pillars (e.g., sockets in `c/` and `networking/`), link to the existing note instead of duplicating content.
+22. **Interview traps** — mark interviewer trick questions and common pitfalls with the 🪤 emoji for easy scanning.
+
 ### Depth & Tone
 
 13. **Go deep** — explain how things work under the hood (memory layout, compiler behavior, hardware interaction). The user is not a beginner.
@@ -137,14 +158,21 @@ The `interview_qa/` folder inside each subject directory contains individual mar
 
 ---
 
-## Current Subjects
+## Current Pillars
 
-| Subject | Directory | Status |
-|---------|-----------|--------|
-| C Language | `c/` | **Active** |
-| C++ | — | Planned |
-| 5G RAN | `5g-ran/` | **Active** |
+| # | Pillar | Directory | Layer | Status |
+|---|--------|-----------|-------|--------|
+| P1 | Linux & Bash | `linux-bash/` | Foundation | **Active** |
+| P2 | Networking | `networking/` | Foundation | **Active** |
+| P3 | C++ & DSA | `cpp/` | Core | **Active** |
+| P3b | DSA Practice | `dsa-practice/` | Core | 📋 Planned (after C++ Phase 5) |
+| P4 | Debugging & Tooling | `debugging-tooling/` | Core | **Active** |
+| P5 | DevOps Essentials | `devops/` | Applied | **Active** |
+| P6 | System Design (LLD+HLD) | `system-design/` | Applied | **Active** |
+| P7 | 5G RAN Domain | `5g-ran/` | Domain | **Active** |
+| — | C Language (legacy) | `c/` | (referenced from P1/P2) | **Active** |
 
 ---
 
 *This file was created on 2026-07-24 and should be updated whenever repo conventions change.*
+*Last updated: 2026-10-11 — expanded from 3 directories to 7-pillar structure.*
