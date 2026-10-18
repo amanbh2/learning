@@ -1,18 +1,35 @@
 #include <iostream>
-#include <string>
+using namespace std;
+
+class robot
+{
+    private:
+        string name{"myRobot"};
+        int age{0};
+    public:
+        robot(string n, int a)
+        {
+            name = n;
+            age = a;
+        }
+
+        string getName()
+        {
+            return name;
+        }
+
+        int getAge()
+        {
+            return age;
+        }
+        
+};
 
 int main()
 {
-    std::string in_str, out_str;
-    std::cout << "Enter string: ";
-    std::cin >> in_str;
-    std::cout << "Input String: " << in_str << std::endl;
-
-    for(char c : in_str)
-    {
-        out_str += std::toupper(c);
-    }
-    std::cout << "Output String: " << out_str << std::endl;
+    robot r("Alexa", 5);
+    cout << "Name of the robot is: " << r.getName() << endl;
+    cout << "Age of the robot is: " << r.getAge() << endl;
 
     return 0;
 }
