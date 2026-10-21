@@ -589,13 +589,38 @@
             });
         }
 
-        // Global keyboard shortcut: Ctrl/Cmd + K
+        // Click delegation for hero search bar or any search trigger
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('#hero-search-trigger, .hero-search-bar, [data-search-trigger]');
+            if (trigger) {
+                e.preventDefault();
+                openSearchModal();
+            }
+        });
+
+        // Keyboard activation on hero search bar (Enter / Space)
+        document.addEventListener('keydown', (e) => {
+            const trigger = e.target.closest('#hero-search-trigger, .hero-search-bar');
+            if (trigger && (e.key === 'Enter' || e.key === ' ')) {
+                e.preventDefault();
+                openSearchModal();
+            }
+        });
+
+        // Global keyboard shortcut: Ctrl/Cmd + K or '/'
         window.addEventListener('keydown', (e) => {
             if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
                 e.preventDefault();
                 if (state.isSearching) {
                     closeSearchModal();
                 } else {
+                    openSearchModal();
+                }
+            } else if (e.key === '/' && !state.isSearching) {
+                const activeEl = document.activeElement;
+                const isEditing = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable);
+                if (!isEditing) {
+                    e.preventDefault();
                     openSearchModal();
                 }
             } else if (e.key === 'Escape' && state.isSearching) {
@@ -695,15 +720,14 @@
                 </div>
                 <h1 class="hero-title">Architectural Notes & <span class="gradient-text">Deep Technical Reference</span></h1>
                 <p class="hero-subtitle">A structured, under-the-hood digital notebook built for continuous technical learning and revision. Curated notes across systems programming, computer science foundations, algorithms, and engineering domains.</p>
-                <div class="hero-actions">
-                    <a href="#/subject/cpp" class="hero-guide-link" style="background: var(--accent); color: #fff; border-color: var(--accent);">
-                        <span>Explore C++ Notes</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <a href="#/guide" class="hero-guide-link">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                        <span>Author's Guide</span>
-                    </a>
+                <div class="hero-search-container">
+                    <div class="hero-search-bar" id="hero-search-trigger" role="button" tabindex="0" aria-label="Search notes, concepts, and topics" title="Search notes (Ctrl+K or /)">
+                        <svg class="hero-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                        <span class="hero-search-text">Search notes, 5G, C++, DSA, Linux, concepts...</span>
+                        <div class="hero-search-shortcut">
+                            <kbd>Ctrl K</kbd>
+                        </div>
+                    </div>
                 </div>
             </section>
 
