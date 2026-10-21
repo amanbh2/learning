@@ -1716,9 +1716,9 @@ details.diagram-source pre.plantuml-code {
 .footer-center {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     gap: 0.75rem;
-    text-align: center;
+    text-align: right;
 }
 
 .footer-nav {
@@ -1742,34 +1742,6 @@ details.diagram-source pre.plantuml-code {
 .footer-copy {
     font-size: 0.8rem;
     color: var(--text-muted);
-}
-
-.footer-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.back-to-top {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: var(--radius-md);
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.back-to-top:hover {
-    color: #fff;
-    background: var(--accent);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
 }
 
 /* --------------------------------------------------------------------------
@@ -1847,9 +1819,12 @@ details.diagram-source pre.plantuml-code {
         text-align: center;
     }
 
-    .footer-right {
-        width: 100%;
-        justify-content: center;
+    /* Floating hovering button is active in all views with responsive offset */
+    .back-to-top-btn {
+        bottom: 1.25rem;
+        right: 1.25rem;
+        width: 42px;
+        height: 42px;
     }
 
     .nav-search-btn kbd {

@@ -1366,14 +1366,6 @@ Main technical material, protocol headers, call flows, and architecture details.
         setupSearchEvents();
         router();
 
-        // Footer Back to Top Button
-        const footerBackToTop = document.getElementById('footer-back-to-top');
-        if (footerBackToTop) {
-            footerBackToTop.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
 
         // Register Offline PWA Service Worker
         if ('serviceWorker' in navigator && (window.location.protocol.startsWith('http') || window.location.protocol.startsWith('https'))) {
