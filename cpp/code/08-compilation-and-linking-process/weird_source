@@ -1,8 +1,0 @@
-#include <iostream>
-#include "my_header.mango"
-
-int main() {
-    std::cout << "Compiling C++ with random extensions!" << std::endl;
-    printMessage();
-    return 0;
-}

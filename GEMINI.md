@@ -7,14 +7,14 @@
 
 ## Repository Purpose
 
-This is a **personal learning repository** and **public documentation knowledge base** for **interview preparation** targeting top-tier companies in the **5G RAN domain**. The repo is organized into **7 pillars** covering the complete skill set needed: Linux, Networking, C++/DSA, Debugging, DevOps, System Design, and 5G RAN. The repository is hosted live via **GitHub Pages** with a modern client-side Single Page Application (SPA).
+This is a **personal technical knowledge base** and **digital note-keeper** across computer science, systems programming, and engineering domains (including 5G RAN, C++, DSA, Linux, Networking, and DevOps). Hosted live via **GitHub Pages** as a fast, zero-build, offline-capable Single Page Application (PWA) under the brand **AMAN.LEARN**.
 
-### Learner Profile
+### Learner Profile & Usage Model
 
-- **Experienced 5G RAN engineer** — not a beginner programmer.
-- Wants **deep, under-the-hood understanding** — how things work internally, not surface-level explanations.
-- Preparing for **technical interviews** — notes should cover the way interviewers ask questions, tricky edge cases, and common pitfalls.
-- Reference material: *Modern C* (Jens Gustedt), *CS:APP* (Bryant & O'Hallaron), 3GPP specifications.
+- **Experienced systems / software engineer** — not a beginner programmer.
+- **Digital Note-Keeper**: Updated iteratively using AI when studying new topics, and used as a rapid reference to review concepts when forgotten.
+- **Deep, Under-the-Hood Understanding**: Notes explain internal mechanics, architectural trade-offs, edge cases, and common interview traps (🪤).
+- **Strictly Notes Only**: This repository is dedicated exclusively to conceptual notes, architectural breakdowns, and reference documentation. Coding practice and rough implementation files live in separate external repositories.
 
 ---
 
@@ -25,46 +25,46 @@ learning/
 ├── GEMINI.md                # THIS FILE — AI rules & conventions (Cockpit)
 ├── README.md                # Human-friendly repo overview
 ├── index.html               # Web application entry point (GitHub Pages)
+├── manifest.webmanifest     # Offline PWA manifest
+├── sw.js                    # Offline PWA service worker
+├── res/                     # Static site resources & icons
+│   ├── favicon.png          # Browser favicon
+│   ├── icon-192.png         # PWA 192x192 icon
+│   └── icon-512.png         # PWA 512x512 icon
 ├── css/
-│   └── style.css            # Web design system, typography, dark/light themes
+│   ├── style.css            # Web design system, typography, dark/light themes
+│   └── vendor/              # Vendored hljs stylesheets
 ├── js/
 │   ├── config.js            # Subject pillars configuration
-│   └── app.js               # Client-side router, TOC parser, markdown engine
+│   ├── app.js               # Client-side router, TOC parser, search, markdown engine
+│   └── vendor/              # Vendored marked, hljs, minisearch libraries
+├── fonts/                   # Self-hosted Inter & JetBrains Mono woff2 fonts
 │
-│── ── FOUNDATION LAYER ─────────────────────────────
-├── linux-bash/              # P1: Linux & Bash
-├── networking/              # P2: Networking (TCP, UDP, SCTP, Sockets)
-│
-│── ── CORE SKILLS LAYER ────────────────────────────
-├── cpp/                     # P3: C++ & DSA (merged — learn C++ by building DSA)
-├── dsa-practice/            # P3b: LeetCode-style pattern-based problem solving
-├── debugging-tooling/       # P4: GDB, Core Dumps, Valgrind, Coverity, Wireshark
-│
-│── ── APPLIED KNOWLEDGE LAYER ──────────────────────
-├── devops/                  # P5: Git, Docker, Kubernetes, CI/CD, CMake
-├── system-design/           # P6: LLD + HLD (telecom-specific)
-│   ├── lld/                 #     Low-Level Design problems
-│   └── hld/                 #     High-Level Design problems
-│
-│── ── DOMAIN LAYER ─────────────────────────────────
-├── 5g-ran/                  # P7: 5G RAN Domain Knowledge
-│
-│── ── LEGACY ───────────────────────────────────────
-└── c/                       # C Language notes (referenced from P1/P2)
+└── content/                 # All learning curricula & notes
+    ├── 5g-ran/              # 5G RAN Domain Knowledge
+    ├── cpp/                 # C++ Language & Modern Features
+    ├── dsa/                 # Data Structures & Algorithms (Patterns & Concepts)
+    ├── c/                   # C Language notes
+    ├── linux-bash/          # Linux & Bash Internals
+    ├── networking/          # Networking Protocols & Socket Programming
+    ├── debugging-tooling/   # GDB, Valgrind, Core Dumps, Profiling
+    ├── devops/              # Git, Docker, Kubernetes, CI/CD, CMake
+    └── system-design/       # Telecom & Distributed System Design
 ```
 
-Each subject directory follows this structure:
+Each subject directory in `content/<subject>/` follows this structure:
 ```
-<subject>/
+content/<subject>/
 ├── CONTENTS.md          # Master Syllabus & Table of Contents (rendered by web app)
 ├── BEST_PRACTICES.md    # Living document for best practices
-├── 01-<topic>.md        # Numbered note files
-├── 02-<topic>.md
-└── code/                # Companion code examples (where applicable)
+├── assets/              # Diagrams, images, illustrations
+├── 01-<topic>.md        # Sequential markdown note files
+└── 02-<topic>.md
 ```
 
 > [!IMPORTANT]
-> **No Separate `interview_qa/` Directories:** All interview questions, tricky edge cases, and "gotchas" are embedded **directly inside the note files** using callout blocks and the 🪤 emoji. Do NOT create or maintain separate `interview_qa/` subfolders.
+> - **Strictly Notes Only:** Do NOT create `code/` subfolders or store rough code in this repository. Code practice belongs in external repositories. Inline markdown code blocks (```cpp, ```c, etc.) inside notes are welcomed and encouraged.
+> - **No Separate `interview_qa/` Directories:** All interview questions, tricky edge cases, and "gotchas" are embedded **directly inside the note files** using callout blocks and the 🪤 emoji.
 
 ---
 
@@ -101,9 +101,6 @@ The main learning material — explanations, concepts, diagrams.
 ### Interview Traps & Gotchas
 🪤 Common tricky questions, edge cases, and pitfalls interviewers ask about.
 
-## Code Examples
-References to companion code files in `code/<NN>-<topic>/` (if applicable).
-
 ## Key Takeaways
 - Bullet point summary of the most important concepts.
 
@@ -114,8 +111,10 @@ References to companion code files in `code/<NN>-<topic>/` (if applicable).
 ### 3. Rich Markdown Elements Supported by Web Renderer
 - **GitHub Callouts:** Use `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`.
 - **Fenced Code Blocks:** Always specify language tag (```cpp, ```c, ```bash, ```json).
-- **Sticky Headings:** The web app generates a sticky "On This Page" sidebar from all `##` and `###` headings. Use descriptive, concise heading titles.
-- **Cross-Links:** Relative links between notes (e.g. `[4G vs 5G](./02-4g-vs-5g-key-differences.md)`) automatically translate to SPA routes.
+- **PlantUML Code Blocks:** Fenced with ```plantuml are rendered as collapsible disclosure panels with syntax-preserved source code.
+- **Sticky Headings:** The web app generates a sticky "On This Page" sidebar from all `##` and `###` headings with smooth scrolling and active section tracking.
+- **Cross-Links:** Intra-subject relative links (e.g. `[4G vs 5G](./02-4g-vs-5g-key-differences.md)`) and cross-subject links (e.g. `[C++ ISA](../cpp/01-instruction-set-architecture.md)`) automatically translate to SPA routes.
+- **Images:** Always place images inside `<subject>/assets/` and reference using standard markdown syntax: `![Alt Text](./assets/filename.png)`. NEVER use Obsidian wiki-links `![[...]]`.
 
 ---
 
@@ -124,8 +123,8 @@ References to companion code files in `code/<NN>-<topic>/` (if applicable).
 | Element | Convention | Example |
 |---------|-----------|---------|
 | Note files | `<SectionNumber>-<kebab-case-topic>.md` | `12-cu-cp-and-cu-up-split.md` |
-| Code directories | `code/<SectionNumber>-<kebab-case-topic>/` | `code/12-cu-cp-split/` |
-| Code files | Descriptive, lowercase, `.c` or `.cpp` extension | `pointer_basics.c` |
+| Static resources | Stored under `res/` | `res/favicon.png` |
+| Assets / Images | `<subject>/assets/<descriptive-name>.png` | `5g-ran/assets/network-architecture.png` |
 
 - **Numbering** must strictly be sequential integers (e.g., `01`, `02`, `03`). 
 - **NEVER** use sub-numbering or letters (e.g., `00b`, `04b`, `12a`).
@@ -137,44 +136,40 @@ References to companion code files in `code/<NN>-<topic>/` (if applicable).
 
 1. **Read this file first** before making any changes to the repository.
 2. **Never break Web Application Compatibility**: When modifying or creating notes or `CONTENTS.md`, adhere strictly to the 4-column TOC format and markdown standards.
-3. **Never create a new pillar/subject directory** unless the user explicitly asks. The 7 pillars are already established.
+3. **Never create a new subject directory** unless the user explicitly asks. The 9 subject directories are already established.
 4. **Always update `CONTENTS.md`** after creating, modifying, or renaming a note.
-5. **No separate `interview_qa/` folders**: Keep all interview questions and 🪤 traps within the main note files.
+5. **No separate `interview_qa/` or `code/` folders**: Keep all interview questions and 🪤 traps within the main note files, and do not commit practice code directories here.
 6. **Proactive Updates**: During conversations, if you discover new insights, corrections, or topics that deserve to be documented, automatically update the relevant notes and `CONTENTS.md` without waiting for explicit permission, and then inform the user about the changes you made.
 7. **Renumber and reorganize notes** dynamically to maintain a logical learning progression.
 8. **Keep notes conversational but structured** — they should read naturally while following the template.
 9. **Use visual aids** — include PlantUML diagrams (with white background: `skinparam backgroundColor white`), tables, and alert callouts.
-10. **Include runnable code examples** whenever a topic involves programming concepts (C++, Linux, Debugging, System Design).
+10. **Include inline code snippets** directly in markdown fenced code blocks when explaining programming concepts (C++, Linux, Debugging, System Design).
 11. **Add the current date** to the "Last updated" footer of every note you create or modify.
 
-### 5G RAN Specific Rules
-12. **No Code Examples Needed:** The 5G RAN domain is purely theoretical for cracking interviews. Do not attempt to write or include code examples for this domain.
-13. **Compare with LTE/NB-IoT:** Explicitly highlight differences between 5G NR and LTE or NB-IoT, especially focusing on tricky differences interviewers love to ask about.
-14. **Diagram Format:** Always use **PlantUML** for diagrams in the 5G RAN domain (`skinparam backgroundColor white`).
-
-### Pillar-Specific Rules
-15. **Theory-only pillars** (`linux-bash/`, `networking/`, `devops/`): Include inline code snippets and commands, but do not create separate code files unless the user explicitly asks.
-16. **Code-heavy pillars** (`cpp/`, `dsa-practice/`, `debugging-tooling/`, `system-design/`): Always include runnable code examples in `code/` subdirectories.
-17. **Cross-reference between pillars** — link to the existing note instead of duplicating content.
-18. **Interview traps** — mark interviewer trick questions and common pitfalls with the 🪤 emoji for easy scanning.
+### Subject-Specific Rules
+12. **5G RAN Domain:** Purely conceptual notes. Explicitly highlight differences between 5G NR and LTE or NB-IoT, especially focusing on tricky differences interviewers love to ask about.
+13. **C++ vs DSA Distinction:** Keep C++ language mechanics (memory model, RAII, templates, concurrency, modern standards) in `cpp/` and algorithmic patterns/structures (trees, graphs, DP, two pointers) in `dsa/`.
+14. **Cross-reference between subjects:** Link using `../<subject>/<file>.md` syntax instead of duplicating content.
+15. **Interview traps:** Mark interviewer trick questions and common pitfalls with the 🪤 emoji for easy scanning.
 
 ---
 
-## Current Pillars
+## Current Curricula
 
-| # | Pillar | Directory | Layer | Status |
-|---|--------|-----------|-------|--------|
-| P1 | Linux & Bash | `linux-bash/` | Foundation | **Active** |
-| P2 | Networking | `networking/` | Foundation | **Active** |
-| P3 | C++ & DSA | `cpp/` | Core | **Active** |
-| P3b | DSA Practice | `dsa-practice/` | Core | 📋 Planned (after C++ Phase 5) |
-| P4 | Debugging & Tooling | `debugging-tooling/` | Core | **Active** |
-| P5 | DevOps Essentials | `devops/` | Applied | **Active** |
-| P6 | System Design (LLD+HLD) | `system-design/` | Applied | **Active** |
-| P7 | 5G RAN Domain | `5g-ran/` | Domain | **Active** |
-| — | C Language (legacy) | `c/` | (referenced from P1/P2) | **Active** |
+| # | Subject | Directory | Scope | Status |
+|---|---------|-----------|-------|--------|
+| 1 | 5G RAN Domain | `5g-ran/` | 3GPP Architecture, Protocols (NR, LTE, NB-IoT) | **Active** (55 Topics) |
+| 2 | C++ Language | `cpp/` | Memory Model, OOP, Modern C++11/14/17/20, Metaprogramming | **Active** (22 Topics) |
+| 3 | C Language | `c/` | Low-level C, Pointers, Memory Management, OS Interfacing | **Active** (5 Topics) |
+| 4 | Data Structures & Algorithms | `dsa/` | Core Structures, Patterns, Conceptual Breakdowns | 📋 Planned |
+| 5 | Linux & Bash | `linux-bash/` | Kernel Internals, IPC, Memory Management, Shell Scripting | 📋 Planned |
+| 6 | Networking | `networking/` | TCP/IP, SCTP, Sockets, Packet Flow | 📋 Planned |
+| 7 | Debugging & Tooling | `debugging-tooling/` | GDB, Core Dumps, Valgrind, Wireshark, ASan | 📋 Planned |
+| 8 | DevOps Essentials | `devops/` | Docker, Kubernetes, CI/CD, CMake, Git | 📋 Planned |
+| 9 | System Design | `system-design/` | Telecom LLD/HLD, High-throughput Distributed Systems | 📋 Planned |
 
 ---
 
 *This file was created on 2026-07-24 and should be updated whenever repo conventions change.*
-*Last updated: 2026-10-18 — enforced Web Application TOC parsing rules and removed interview_qa subfolders.*
+*Last updated: 2026-10-21 — AMAN.LEARN rebrand, zero-build offline PWA, res/ directory organization, and separated C++ & DSA curricula.*
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting... | Learning Hub</title>
+    <script>
+        // GitHub Pages 404 fallback for SPA hash router
+        // Redirects any invalid path back to the root, preserving the hash
+        (function () {
+            var path = window.location.pathname;
+            var hash = window.location.hash;
+            // If already at root, do nothing
+            if (path === '/' || path === '/learning/' || path === '/learning/index.html') return;
+            // Redirect to root with original hash
+            window.location.replace('/learning/' + (hash || '#/'));
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirecting to <a href="/learning/">Learning Hub</a>...</p>
+</body>
+</html>

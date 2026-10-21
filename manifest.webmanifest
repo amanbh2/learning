@@ -1,0 +1,22 @@
+{
+  "name": "AMAN.LEARN | Personal Technical Knowledge Base",
+  "short_name": "AMAN.LEARN",
+  "description": "Personal knowledge base and technical note-keeper across systems programming, computer science, and engineering domains.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0e17",
+  "theme_color": "#0a0e17",
+  "icons": [
+    {
+      "src": "res/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "res/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
