@@ -151,6 +151,7 @@ The main learning material — explanations, concepts, diagrams.
 13. **C++ vs DSA Distinction:** Keep C++ language mechanics (memory model, RAII, templates, concurrency, modern standards) in `cpp/` and algorithmic patterns/structures (trees, graphs, DP, two pointers) in `dsa/`.
 14. **Cross-reference between subjects:** Link using `../<subject>/<file>.md` syntax instead of duplicating content.
 15. **Interview traps:** Mark interviewer trick questions and common pitfalls with the 🪤 emoji for easy scanning.
+16. **Modular Note Sizing & Decomposition:** Always optimize and break bulky notes into meaningful, modular divisions. Avoid monolithic, bloated files; split complex topics into dedicated, cohesive notes with a clear logical progression, renumbering and updating `CONTENTS.md` accordingly.
 
 ---
 
@@ -158,7 +159,7 @@ The main learning material — explanations, concepts, diagrams.
 
 | # | Subject | Directory | Scope | Status |
 |---|---------|-----------|-------|--------|
-| 1 | 5G RAN Domain | `5g-ran/` | 3GPP Architecture, Protocols (NR, LTE, NB-IoT) | **Active** (55 Topics) |
+| 1 | 5G RAN Domain | `5g-ran/` | 3GPP Architecture, Protocols (NR, LTE, NB-IoT) | **Active** (56 Topics) |
 | 2 | C++ Language | `cpp/` | Memory Model, OOP, Modern C++11/14/17/20, Metaprogramming | **Active** (22 Topics) |
 | 3 | C Language | `c/` | Low-level C, Pointers, Memory Management, OS Interfacing | **Active** (5 Topics) |
 | 4 | Data Structures & Algorithms | `dsa/` | Core Structures, Patterns, Conceptual Breakdowns | 📋 Planned |

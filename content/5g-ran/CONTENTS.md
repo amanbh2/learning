@@ -35,7 +35,7 @@ This directory covers deep, interview-level knowledge of 5G Radio Access Network
 |----|-------|----------------|--------------|
 | 15 | [Identities (RNTIs, Cell IDs, PLMN)](./15-identities-rntis-and-cell-ids.md) | High | C-RNTI, RA-RNTI, PCI, NCGI, gNB-ID, SUPI/SUCI, 5G-S-TMSI |
 | 16 | [Radio Bearers (SRBs and DRBs)](./16-radio-bearers-srbs-and-drbs.md) | Very High | SRB0/1/2/3, DRB, QoS flow→DRB mapping, RLC modes (TM/UM/AM) |
-| 17 | [System Information (MIB, SIB1, OSI)](./17-system-information.md) | High | MIB fields, SIB1 contents, SIB2-SIB9, On-Demand SI, SI scheduling |
+| 17 | [System Information (MIB, SIB1, OSI)](./17-system-information.md) | High | MIB, SIB1, SIB2–SIB27 & SIBpos master reference, On-Demand SI, SI scheduling |
 | 18 | [RRC States and Transitions](./18-rrc-states-and-transitions.md) | Very High | IDLE, CONNECTED, INACTIVE, state machine, LTE vs NR states |
 | 19 | [RRC Timers and Constants Reference](./19-rrc-timers-reference.md) | Very High | T300-T311, T319, N310/N311, timer-triggered procedures |
 | 20 | [RRC Measurements and Events (A1–A6, B1–B2)](./20-rrc-measurements-and-events.md) | Very High | A1–A6, B1–B2, RSRP/RSRQ/SINR, TTT, hysteresis, offset, filter coeff |
@@ -92,18 +92,19 @@ This directory covers deep, interview-level knowledge of 5G Radio Access Network
 
 | NN | Topic | Interview Heat | Key Concepts |
 |----|-------|----------------|--------------|
-| 50 | [Non-Terrestrial Networks (NTN) — NR-NTN](./50-ntn.md) | High | LEO/MEO/GEO, transparent vs regenerative, SIB19, Doppler, HARQ disabling |
-| 51 | [NB-IoT & eMTC over NTN (IoT-NTN)](./51-nbiot-emtc-ntn.md) | High | IoT-NTN (Rel-17), GNSS-based TA, store-and-forward, coverage classes |
-| 52 | [NTN Mobility & Feeder Link Switching](./52-ntn-mobility.md) | Medium | Earth-fixed vs Earth-moving cells, satellite HO, feeder link switch |
+| 50 | [Non-Terrestrial Networks (NTN) — NR-NTN](./50-ntn.md) | High | Transparent vs regenerative, SIB19 IEs, Ephemeris, Autonomous TA, Koffset, Doppler |
+| 51 | [NTN Geographic Cell Modeling & Algorithms](./51-ntn-geographic-cell-modeling.md) | High | Earth-fixed vs Earth-moving, Ellipsoid-Points, 3-15 Polygon cells, PIP Gnomonic Algorithm, TAC |
+| 52 | [NB-IoT & eMTC over NTN (IoT-NTN)](./52-nbiot-emtc-ntn.md) | High | IoT-NTN (Rel-17), GNSS-based TA, store-and-forward, coverage classes |
+| 53 | [NTN Mobility & Feeder Link Switching](./53-ntn-mobility.md) | Medium | Earth-fixed vs Earth-moving cells, satellite HO, feeder link switch |
 
 ## Phase 7: Cloud-Native RAN & Operations
 > *"How 5G actually runs in production."*
 
 | NN | Topic | Interview Heat | Key Concepts |
 |----|-------|----------------|--------------|
-| 53 | [CU-CP Resiliency and High Availability](./53-cucp-resiliency-and-ha.md) | High | Active/Standby, SCTP failover, state checkpointing, UECC model |
-| 54 | [Redis in Cloud-Native RAN](./54-redis-in-cloud-native-ran.md) | Medium | In-memory state store, hiredis, stateless CU-CP design |
-| 55 | [Kubernetes & Container-Native RAN](./55-kubernetes-container-native-ran.md) | Medium | Pod lifecycle, liveness/readiness probes, CNF vs VNF, Helm |
+| 54 | [CU-CP Resiliency and High Availability](./54-cucp-resiliency-and-ha.md) | High | Active/Standby, SCTP failover, state checkpointing, UECC model |
+| 55 | [Redis in Cloud-Native RAN](./55-redis-in-cloud-native-ran.md) | Medium | In-memory state store, hiredis, stateless CU-CP design |
+| 56 | [Kubernetes & Container-Native RAN](./56-kubernetes-container-native-ran.md) | Medium | Pod lifecycle, liveness/readiness probes, CNF vs VNF, Helm |
 
 ---
-*Last updated: 2026-10-18*
+*Last updated: 2026-10-30*
