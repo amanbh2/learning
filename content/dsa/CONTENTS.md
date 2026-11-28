@@ -1,88 +1,68 @@
 # Data Structures & Algorithms — Table of Contents & Notes
 
-> **Purpose:** Theoretical foundations, algorithm design, complexity analysis, and pattern mastery for technical deep dives and review.
-> **Scope:** Independent conceptual curriculum covering data structures and algorithms from the ground up.
+> **Purpose:** Practical, end-to-end Data Structures & Algorithms (DSA) curriculum tailored for a **C/C++ systems & 5G RAN engineer** preparing for high-bar product/systems engineering interviews.
+> **Scope:** Emphasizes cache locality, contiguous vs pointer-based memory overhead, deterministic real-time latency, pointer arithmetic, and internal mechanics of standard C++ containers.
 
 ---
 
-## Phase 1 — Algorithmic Foundations & Analysis
+## Phase 1 — Complexity, Memory Hierarchy & Contiguous Sequences
 
-> *"Understanding how algorithms scale before analyzing individual structures."*
+> *"Understanding hardware cache lines, amortized analysis, and contiguous array mechanics before touching high-level structures."*
 
 | NN | Topic | Interview Heat | Key Concepts |
 |----|-------|----------------|--------------|
-| 01 | Asymptotic Analysis & Big-O Notation | High | Time vs Space complexity, Best/Worst/Amortized, Master Theorem |
-| 02 | Memory Layout of Data Structures | Medium | Contiguous vs Linked allocations, cache locality, memory overhead |
+| 01 | [Asymptotic Complexity, Cache Locality & std::vector Internals](./01-asymptotic-complexity-and-vector-internals.md) | Very High | Big-O/Ω/Θ, 64-byte L1/L2/L3 cache lines, 3-pointer vector layout, 2x geometric growth proof, iterator invalidation |
+| 02 | [Pointer Arithmetic, Two Pointers & Sliding Window Patterns](./02-two-pointers-and-sliding-window.md) | Very High | Memory stride, opposite-ends convergence, variable vs fixed window, fast/slow cycle detection |
+| 03 | [Circular Ring Buffers & std::deque Chunked Paged Array Internals](./03-ring-buffers-and-deque-internals.md) | Very High | Power-of-2 modulo bitmasking, map of buffer blocks, FIFO zero-copy RAN queues, lock-free SPSC basics |
 
 ---
 
-## Phase 2 — Linear Data Structures
+## Phase 2 — Node-Based Chains, Fast Lookups & Bitwise State
 
-> *"Sequential storage models, trade-offs, and pointer manipulation."*
+> *"Pointer manipulation, hashing trade-offs, and bitwise state tracking used in embedded telecom runtimes."*
 
 | NN | Topic | Interview Heat | Key Concepts |
 |----|-------|----------------|--------------|
-| 03 | Arrays & Dynamic Arrays | High | Static vs dynamic array doubling, capacity vs size, amortized O(1) insertion |
-| 04 | Singly & Doubly Linked Lists | High | Pointer manipulation, sentinel dummy nodes, fast & slow pointers |
-| 05 | Stacks & Monotonic Stacks | Very High | LIFO semantics, call stack simulation, monotonic stack for next greater element |
-| 06 | Queues, Deques & Circular Buffers | High | FIFO semantics, double-ended queues, ring buffers, lockless ring buffer basics |
+| 04 | [Linked Lists, Sentinel Nodes & Pointer Manipulation Patterns](./04-linked-lists-and-pointer-patterns.md) | High | Pointer-to-pointer (`Node**`), dummy head/tail sentinels, in-place reversal, cache miss penalty vs vector |
+| 05 | [Monotonic Stacks, Queues & Next Greater Element Patterns](./05-monotonic-stacks-and-queues.md) | Very High | LIFO stack frames, monotonic invariant maintenance, Next Greater Element, sliding window maximum |
+| 06 | [Hash Tables: std::unordered_map Buckets, Chaining vs Robin Hood & Bit Manipulation](./06-hash-tables-and-bit-manipulation.md) | Very High | Bucket arrays, linked list chaining, load factor & rehashing, bitmasks, XOR swaps, Brian Kernighan |
 
 ---
 
-## Phase 3 — Trees & Hierarchical Structures
+## Phase 3 — Hierarchical Structures, Balanced Trees & Heaps
 
-> *"Non-linear hierarchies, recursive properties, and balanced trees."*
+> *"Non-linear hierarchies, logarithmic invariants, and priority-driven event scheduling."*
 
 | NN | Topic | Interview Heat | Key Concepts |
 |----|-------|----------------|--------------|
-| 07 | Binary Trees & Traversal Techniques | High | Preorder, Inorder, Postorder, Level-order, recursive vs iterative stack traversal |
-| 08 | Binary Search Trees (BST) | High | BST invariants, predecessor/successor, search/insert/delete complexity |
-| 09 | Self-Balancing Trees (AVL & Red-Black) | High | Rotations, height balancing, 2-3-4 tree isomorphism, Red-Black invariants |
-| 10 | Heaps & Priority Queues | Very High | Binary min/max heap, array representation, heapify up/down, O(N) buildHeap |
-| 11 | Tries (Prefix Trees) | High | Retrieval tree, prefix matching, word search, memory-efficient Radix trees |
+| 07 | [Binary Trees, Traversals & Recursion to Iterative Stack Mechanics](./07-binary-trees-and-traversals.md) | High | Pre/In/Post/Level-order, Morris traversal, call stack limits, tree diameter, lowest common ancestor |
+| 08 | [Binary Search Trees, AVL vs Red-Black Trees (std::map) & Order Statistics](./08-bst-and-balanced-trees.md) | High | BST search/insert invariants, tree rotations, Red-Black color rules, `std::map` node allocation cost |
+| 09 | [Binary Heaps, std::priority_queue & Event-Driven Real-Time Timers](./09-binary-heaps-and-priority-queues.md) | Very High | Implicit array representation, sift-up/sift-down, O(N) Floyd build-heap, telecom timer wheels vs min-heaps |
 
 ---
 
-## Phase 4 — Hash-Based Structures
+## Phase 4 — Graphs, Topological Ordering & Network Routing
 
-> *"Constant-time amortized lookups, collision resolution, and hash distribution."*
+> *"Modeling interconnected networks, dependency graphs, and optimal packet routing."*
 
 | NN | Topic | Interview Heat | Key Concepts |
 |----|-------|----------------|--------------|
-| 12 | Hash Tables & Hash Functions | Very High | Direct addressing, hash functions (djb2, Murmur), distribution properties |
-| 13 | Collision Resolution Techniques | High | Chaining with linked lists/BSTs, open addressing (linear, quadratic, double hashing) |
-| 14 | Load Factor & Dynamic Rehashing | Medium | Rehash threshold, performance degradation, amortized O(1) resizing |
+| 10 | [Graph Representations: Adjacency List vs CSR & BFS/DFS State Machines](./10-graph-representations-and-traversals.md) | Very High | Adjacency list vs matrix vs Compressed Sparse Row (CSR), BFS shortest unweighted path, cycle detection |
+| 11 | [Topological Sort, DAG Dependency Resolution & Cycle Detection](./11-topological-sort-and-dags.md) | High | Kahn's algorithm (in-degree queue), DFS postorder reverse, task scheduling, module dependency trees |
+| 12 | [Shortest Paths: Dijkstra, Bellman-Ford & Telecom Link Weight Optimization](./12-shortest-paths-dijkstra-bellman-ford.md) | Very High | Greedy relaxation, min-heap Dijkstra, negative edge weights, Bellman-Ford, network routing protocols |
+| 13 | [Disjoint Set Union (Union-Find) & Kruskal's MST](./13-disjoint-set-union-and-mst.md) | High | Path compression, union by rank/size, inverse Ackermann α(N), Kruskal's minimum spanning tree |
 
 ---
 
-## Phase 5 — Graphs & Network Algorithms
+## Phase 5 — Advanced Search, Tries & Dynamic Programming Patterns
 
-> *"Representing relationships, traversal paradigms, and shortest paths."*
+> *"Optimal subproblems, prefix lookups, and monotonic answer spaces for high-throughput decision systems."*
 
 | NN | Topic | Interview Heat | Key Concepts |
 |----|-------|----------------|--------------|
-| 15 | Graph Representations | Medium | Adjacency matrix vs adjacency list, sparse vs dense graphs |
-| 16 | Graph Traversals (BFS & DFS) | Very High | Queue vs recursion, cycle detection in directed/undirected graphs, connected components |
-| 17 | Topological Sort & DAGs | High | Kahn's algorithm (in-degree queue), DFS postorder, dependency resolution |
-| 18 | Shortest Path Algorithms | Very High | Dijkstra's algorithm (min-heap), Bellman-Ford (negative cycles), Floyd-Warshall |
-| 19 | Minimum Spanning Trees (MST) | Medium | Cut property, Kruskal's algorithm (Union-Find), Prim's algorithm |
-| 20 | Disjoint Set Union (Union-Find) | High | Path compression, union by rank/size, near O(1) inverse Ackermann |
+| 14 | [Prefix Tries, Radix Trees & Telecom Longest Prefix Match (LPM)](./14-tries-and-longest-prefix-match.md) | High | 26-ary/256-ary pointer arrays, prefix search, IP routing LPM, Radix tree memory compression |
+| 15 | [Binary Search on Ranges & Monotonic Answer Spaces](./15-binary-search-patterns.md) | Very High | `std::lower_bound`/`upper_bound`, predicate-based binary search, capacity/rate allocation optimization |
+| 16 | [Dynamic Programming: 1D/2D State Transitions, Knapsack & Interval Scheduling](./16-dynamic-programming-patterns.md) | Very High | Memoization vs tabulation, space optimization, 0/1 Knapsack, Longest Common Subsequence, interval scheduling |
 
 ---
-
-## Phase 6 — Core Algorithmic Paradigms & Patterns
-
-> *"Standard problem-solving patterns applied across technical problem domains."*
-
-| NN | Topic | Interview Heat | Key Concepts |
-|----|-------|----------------|--------------|
-| 21 | Two Pointers & Sliding Window | Very High | Opposite ends, fast & slow pointers, fixed vs variable window sizing |
-| 22 | Binary Search Patterns | Very High | Monotonic search space, finding inflection points, lower/upper bound |
-| 23 | Divide and Conquer & Sorting | High | MergeSort, QuickSort, QuickSelect, non-comparison counting/radix sort |
-| 24 | Dynamic Programming: Memoization & Tabulation | Very High | Optimal substructure, overlapping subproblems, 1D/2D state transitions, Knapsack |
-| 25 | Greedy Algorithms | Medium | Greedy choice property, interval scheduling, Huffman coding |
-| 26 | Backtracking & State Space Search | High | Pruning, N-Queens, subset generation, permutation trees |
-| 27 | Bit Manipulation Techniques | High | Bitmasks, bitwise arithmetic, XOR properties, Brian Kernighan's algorithm |
-
----
-*Last updated: 2026-10-21*
+*Last updated: 2026-11-24*

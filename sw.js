@@ -3,7 +3,7 @@
  * Pre-caches shell assets and caches markdown notes on access.
  */
 
-const CACHE_NAME = 'aman-learn-v1';
+const CACHE_NAME = 'aman-learn-v2';
 const SHELL_ASSETS = [
     './',
     'index.html',

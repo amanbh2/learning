@@ -30,9 +30,11 @@ const CONFIG = {
             icon: "📐",
             contentsFile: "content/dsa/CONTENTS.md",
             baseDir: "content/dsa",
-            enabled: false,
+            enabled: true,
             accentColor: "#14b8a6",
-            badge: "Planned"
+            badge: "Active",
+            totalPhases: 5,
+            totalTopics: 16
         },
         {
             id: "c",

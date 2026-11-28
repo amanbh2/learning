@@ -92,7 +92,7 @@ This directory covers deep, interview-level knowledge of 5G Radio Access Network
 
 | NN | Topic | Interview Heat | Key Concepts |
 |----|-------|----------------|--------------|
-| 50 | [Non-Terrestrial Networks (NTN) — NR-NTN](./50-ntn.md) | High | Transparent vs regenerative, SIB19 IEs, Ephemeris, Autonomous TA, Koffset, Doppler |
+| 50 | [Non-Terrestrial Networks (NTN) — NR-NTN](./50-ntn.md) | High | Origin, Payloads (Transparent/Semi/Regenerative), SIB19 IEs, Ephemeris, Autonomous TA, Doppler |
 | 51 | [NTN Geographic Cell Modeling & Algorithms](./51-ntn-geographic-cell-modeling.md) | High | Earth-fixed vs Earth-moving, Ellipsoid-Points, 3-15 Polygon cells, PIP Gnomonic Algorithm, TAC |
 | 52 | [NB-IoT & eMTC over NTN (IoT-NTN)](./52-nbiot-emtc-ntn.md) | High | IoT-NTN (Rel-17), GNSS-based TA, store-and-forward, coverage classes |
 | 53 | [NTN Mobility & Feeder Link Switching](./53-ntn-mobility.md) | Medium | Earth-fixed vs Earth-moving cells, satellite HO, feeder link switch |
@@ -107,4 +107,4 @@ This directory covers deep, interview-level knowledge of 5G Radio Access Network
 | 56 | [Kubernetes & Container-Native RAN](./56-kubernetes-container-native-ran.md) | Medium | Pod lifecycle, liveness/readiness probes, CNF vs VNF, Helm |
 
 ---
-*Last updated: 2026-10-30*
+*Last updated: 2026-11-24*

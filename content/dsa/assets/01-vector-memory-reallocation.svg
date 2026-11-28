@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="100%" style="max-width: 960px; height: auto; display: block; margin: 1.5rem auto;">
+  <defs>
+    <linearGradient id="bg-grad-vec" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow-vec" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrow-rose" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e"/>
+    </marker>
+  </defs>
+
+  <!-- Container Box -->
+  <rect width="100%" height="100%" rx="12" fill="url(#bg-grad-vec)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Diagram Title -->
+  <text x="480" y="40" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#f8fafc" text-anchor="middle">std::vector Memory Anatomy &amp; 2× Geometric Reallocation</text>
+  <text x="480" y="62" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Contiguous Heap Storage, 3-Pointer Stack Footprint (24 Bytes) &amp; Iterator Invalidation</text>
+
+  <!-- SECTION 1: STACK OBJECT -->
+  <rect x="50" y="95" width="230" height="230" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <rect x="50" y="95" width="230" height="35" rx="8" fill="#0284c7" fill-opacity="0.2"/>
+  <text x="165" y="118" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#38bdf8" text-anchor="middle">Stack Footprint (24B)</text>
+  <text x="165" y="138" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8" text-anchor="middle">sizeof(std::vector&lt;T&gt;)</text>
+
+  <!-- 3 Pointers on Stack -->
+  <!-- Pointer 1: start -->
+  <rect x="65" y="150" width="200" height="42" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="75" y="168" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#38bdf8">T* _M_start</text>
+  <text x="75" y="184" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#94a3b8">First constructed element</text>
+
+  <!-- Pointer 2: finish -->
+  <rect x="65" y="200" width="200" height="42" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="75" y="218" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#34d399">T* _M_finish</text>
+  <text x="75" y="234" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#94a3b8">One past last element (size)</text>
+
+  <!-- Pointer 3: end_of_storage -->
+  <rect x="65" y="250" width="200" height="42" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="75" y="268" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#fbbf24">T* _M_end_of_storage</text>
+  <text x="75" y="284" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#94a3b8">End of allocated heap buffer</text>
+
+  <text x="165" y="312" font-family="JetBrains Mono, monospace" font-size="11" fill="#cbd5e1" text-anchor="middle">size = finish - start</text>
+
+  <!-- SECTION 2: HEAP BEFORE REALLOCATION -->
+  <rect x="330" y="95" width="580" height="150" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="345" y="122" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#cbd5e1">1. Current Heap Buffer (Capacity = 4, Size = 4)</text>
+  <text x="740" y="122" font-family="JetBrains Mono, monospace" font-size="12" fill="#f43f5e" font-weight="600">Buffer Full: push_back()</text>
+
+  <!-- 4 Occupied Slots -->
+  <g transform="translate(345, 140)">
+    <rect x="0" y="0" width="90" height="50" rx="4" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="45" y="25" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#f8fafc" text-anchor="middle">elem[0]</text>
+    <text x="45" y="42" font-family="JetBrains Mono, monospace" font-size="10" fill="#94a3b8" text-anchor="middle">0x1000</text>
+
+    <rect x="95" y="0" width="90" height="50" rx="4" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="140" y="25" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#f8fafc" text-anchor="middle">elem[1]</text>
+    <text x="140" y="42" font-family="JetBrains Mono, monospace" font-size="10" fill="#94a3b8" text-anchor="middle">0x1004</text>
+
+    <rect x="190" y="0" width="90" height="50" rx="4" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="235" y="25" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#f8fafc" text-anchor="middle">elem[2]</text>
+    <text x="235" y="42" font-family="JetBrains Mono, monospace" font-size="10" fill="#94a3b8" text-anchor="middle">0x1008</text>
+
+    <rect x="285" y="0" width="90" height="50" rx="4" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="330" y="25" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#f8fafc" text-anchor="middle">elem[3]</text>
+    <text x="330" y="42" font-family="JetBrains Mono, monospace" font-size="10" fill="#94a3b8" text-anchor="middle">0x100C</text>
+  </g>
+
+  <!-- Pointers to Old Buffer -->
+  <path d="M 265 170 C 295 170, 310 165, 340 165" stroke="#38bdf8" stroke-width="1.5" fill="none" marker-end="url(#arrow-vec)"/>
+  <path d="M 265 220 C 310 220, 680 205, 720 165" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 265 270 C 320 270, 680 230, 720 175" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,3" fill="none"/>
+
+  <text x="345" y="222" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#f43f5e">⚠ ALL POINTERS &amp; ITERATORS TO 0x1000..0x100C ARE INVALIDATED UPON REALLOCATION</text>
+
+  <!-- SECTION 3: HEAP AFTER 2X REALLOCATION -->
+  <rect x="50" y="345" width="860" height="245" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+  <text x="70" y="375" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#34d399">2. New Heap Buffer Allocated (Capacity = 8, Size = 5)</text>
+  <text x="560" y="375" font-family="JetBrains Mono, monospace" font-size="12" fill="#94a3b8">Growth Factor: 2.0x (GCC/Clang) or 1.5x (MSVC)</text>
+
+  <!-- 8 Slots in New Buffer -->
+  <g transform="translate(70, 395)">
+    <!-- 4 Moved Elements -->
+    <rect x="0" y="0" width="95" height="55" rx="4" fill="#065f46" fill-opacity="0.3" stroke="#34d399" stroke-width="1.5"/>
+    <text x="47" y="27" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#f8fafc" text-anchor="middle">elem[0]</text>
+    <text x="47" y="44" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#34d399" text-anchor="middle">moved/copied</text>
+
+    <rect x="100" y="0" width="95" height="55" rx="4" fill="#065f46" fill-opacity="0.3" stroke="#34d399" stroke-width="1.5"/>
+    <text x="147" y="27" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#f8fafc" text-anchor="middle">elem[1]</text>
+    <text x="147" y="44" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#34d399" text-anchor="middle">moved/copied</text>
+
+    <rect x="200" y="0" width="95" height="55" rx="4" fill="#065f46" fill-opacity="0.3" stroke="#34d399" stroke-width="1.5"/>
+    <text x="247" y="27" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#f8fafc" text-anchor="middle">elem[2]</text>
+    <text x="247" y="44" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#34d399" text-anchor="middle">moved/copied</text>
+
+    <rect x="300" y="0" width="95" height="55" rx="4" fill="#065f46" fill-opacity="0.3" stroke="#34d399" stroke-width="1.5"/>
+    <text x="347" y="27" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#f8fafc" text-anchor="middle">elem[3]</text>
+    <text x="347" y="44" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#34d399" text-anchor="middle">moved/copied</text>
+
+    <!-- 1 Newly Pushed Element -->
+    <rect x="400" y="0" width="95" height="55" rx="4" fill="#1e3a8a" fill-opacity="0.4" stroke="#38bdf8" stroke-width="2"/>
+    <text x="447" y="27" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">elem[4]</text>
+    <text x="447" y="44" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#38bdf8" text-anchor="middle">newly inserted</text>
+
+    <!-- 3 Unconstructed Reserved Slots -->
+    <rect x="500" y="0" width="95" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+    <text x="547" y="27" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b" text-anchor="middle">[free]</text>
+    <text x="547" y="44" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">unconstructed</text>
+
+    <rect x="600" y="0" width="95" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+    <text x="647" y="27" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b" text-anchor="middle">[free]</text>
+    <text x="647" y="44" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">unconstructed</text>
+
+    <rect x="700" y="0" width="95" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+    <text x="747" y="27" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b" text-anchor="middle">[free]</text>
+    <text x="747" y="44" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">unconstructed</text>
+  </g>
+
+  <!-- Pointer Labels Below -->
+  <text x="70" y="475" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#38bdf8">▲ _M_start (0x2000)</text>
+  <text x="565" y="475" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#34d399">▲ _M_finish (0x2014)</text>
+  <text x="860" y="475" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#fbbf24" text-anchor="end">▲ _M_end_of_storage (0x2020)</text>
+
+  <!-- Step Breakdown Card -->
+  <rect x="70" y="495" width="820" height="75" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="85" y="516" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Three Core Reallocation Steps (Cost = O(N)):</text>
+  <text x="85" y="536" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#cbd5e1">1. Allocate new heap block of 2 × old_capacity elements (e.g. at 0x2000).</text>
+  <text x="85" y="552" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#cbd5e1">2. Move construct existing elements if `std::is_nothrow_move_constructible_v&lt;T&gt;`, else fallback to copy construct (Strong Exception Guarantee).</text>
+  <text x="85" y="566" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#cbd5e1">3. Destroy old objects in 0x1000..0x100C and deallocate old buffer via operator delete(). Update 3 stack pointers.</text>
+</svg>

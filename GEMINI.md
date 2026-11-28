@@ -114,7 +114,38 @@ The main learning material — explanations, concepts, diagrams.
 - **PlantUML Code Blocks:** Fenced with ```plantuml are rendered as collapsible disclosure panels with syntax-preserved source code.
 - **Sticky Headings:** The web app generates a sticky "On This Page" sidebar from all `##` and `###` headings with smooth scrolling and active section tracking.
 - **Cross-Links:** Intra-subject relative links (e.g. `[4G vs 5G](./02-4g-vs-5g-key-differences.md)`) and cross-subject links (e.g. `[C++ ISA](../cpp/01-instruction-set-architecture.md)`) automatically translate to SPA routes.
-- **Images:** Always place images inside `<subject>/assets/` and reference using standard markdown syntax: `![Alt Text](./assets/filename.png)`. NEVER use Obsidian wiki-links `![[...]]`.
+- **Images:** Always place images and standalone diagrams inside `<subject>/assets/` and reference using standard markdown syntax: `![Alt Text](./assets/filename.png)`. NEVER use Obsidian wiki-links `![[...]]`.
+
+### 4. Visuals & SVG Diagram Conventions
+To maintain visual quality, zero-dependency rendering, and responsive performance across both light and dark themes, all architectural, memory, and algorithmic diagrams must strictly adhere to the following standards:
+
+1. **Storage & Embedding:**
+   - Save diagrams as standalone `.svg` files inside a sibling `assets/` directory per subject (e.g., `content/dsa/assets/<diagram-name>.svg`).
+   - Embed them in Markdown using standard syntax: `![Alt Text](./assets/<diagram-name>.svg)`. This keeps markdown note files clean and human-readable.
+   - Only use inline `<svg>` if dynamic CSS variable bindings are strictly required.
+2. **Responsive Sizing & Viewport:**
+   - Every `<svg>` root tag MUST define an explicit `viewBox="0 0 <width> <height>"`, `width="100%"`, and `style="max-width: <width>px; height: auto; display: block; margin: 1.5rem auto;"`.
+   - NEVER use fixed pixel `width` or `height` attributes that cause overflow on mobile or narrow split-pane viewports.
+3. **Theme-Safe Styling:**
+   - Because the web application supports both light and dark themes, every standalone `.svg` file must include an explicit rounded background `<rect width="100%" height="100%" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>`.
+   - Use high-contrast strokes and fills:
+     - Primary text/headings: `#f8fafc`
+     - Secondary/subtitles/annotations: `#94a3b8`
+     - Accent cyan/blue: `#38bdf8`
+     - Accent emerald/green: `#34d399`
+     - Accent amber/yellow: `#fbbf24`
+     - Accent rose/red: `#f43f5e`
+     - Accent purple/violet: `#a855f7`
+   - This ensures crisp readability regardless of whether the user is browsing in dark or light mode.
+4. **Typography & Layout Guardrails:**
+   - Standard labels, titles, and explanations: `font-family="Inter, system-ui, sans-serif"`.
+   - Indices, pointers, memory addresses, byte offsets, and complexity notation: `font-family="JetBrains Mono, monospace"`.
+   - Centering: Use `text-anchor="middle"` inside rectangular or circular nodes.
+   - Internal padding: Maintain at least `16px` internal padding around text inside boxes.
+   - Connectors: Define reusable `<marker>` elements in `<defs>` for arrowheads.
+   - Zero collisions: Verify text labels never overlap node borders, markers, or connector lines.
+5. **When to Include SVGs:**
+   - Include standalone SVG diagrams whenever spatial structure, pointer movement, contiguous vs non-contiguous memory layouts, recursion trees, state transitions, or graph/tree traversals clarify concepts faster and more reliably than text alone.
 
 ---
 
@@ -124,7 +155,7 @@ The main learning material — explanations, concepts, diagrams.
 |---------|-----------|---------|
 | Note files | `<SectionNumber>-<kebab-case-topic>.md` | `12-cu-cp-and-cu-up-split.md` |
 | Static resources | Stored under `res/` | `res/favicon.png` |
-| Assets / Images | `<subject>/assets/<descriptive-name>.png` | `5g-ran/assets/network-architecture.png` |
+| Assets / Images / SVGs | `<subject>/assets/<descriptive-name>.(png\|svg)` | `dsa/assets/vector-reallocation.svg` |
 
 - **Numbering** must strictly be sequential integers (e.g., `01`, `02`, `03`). 
 - **NEVER** use sub-numbering or letters (e.g., `00b`, `04b`, `12a`).
